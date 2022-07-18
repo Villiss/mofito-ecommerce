@@ -1,0 +1,31 @@
+{
+  "root": true,
+  "project": {
+    "name": "mofito-ecommerce"
+  },
+  "api": {
+    "projectId": "osxyfyex",
+    "dataset": "production"
+  },
+  "plugins": [
+    "@sanity/base",
+    "@sanity/default-layout",
+    "@sanity/default-login",
+    "@sanity/desk-tool",
+    "table",
+    "@ssfbank/sanity-plugin-byo-table"
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        "@sanity/vision"
+      ]
+    }
+  },
+  "parts": [
+    {
+      "name": "part:@sanity/base/schema",
+      "path": "./schemas/schema"
+    }
+  ]
+}
