@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { AiOutlineMinus, AiOutlinePlus, AiOutlineLeft, AiOutlineShopping } from 'react-icons/ai';
 import { TiDeleteOutline } from 'react-icons/ti';
 import toast from 'react-hot-toast';
-
 import { useStateContext } from '../context/StateContext';
 import { urlFor } from '../lib/client';
 import getStripe from '../lib/getStripe';
@@ -28,7 +27,7 @@ const Cart = () => {
     
     const data = await response.json();
 
-    toast.loading('Redirecting...');
+    toast.loading(`${Strings.cart_redirecting}`);
 
     stripe.redirectToCheckout({ sessionId: data.id });
   }
@@ -42,7 +41,7 @@ const Cart = () => {
         onClick={() => setShowCart(false)}>
           <AiOutlineLeft />
           <span className="heading">{Strings.cart_your_cart}</span>
-          <span className="cart-num-items">{`${totalQuantities} ${Strings.cart_items}`}</span>
+          <span className="cart-num-items">{`${totalQuantities} ${totalQuantities > 4 || totalQuantities == 0 ? Strings.cart_items3 : totalQuantities > 1 ? Strings.cart_items2 : Strings.cart_items1}`}</span>
         </button>
 
         {cartItems.length < 1 && (
@@ -100,7 +99,7 @@ const Cart = () => {
             </div>
             <div className="btn-container">
               <button type="button" className="btn" onClick={handleCheckout}>
-                Checkout
+                {Strings.cart_checkout}
               </button>
             </div>
           </div>

@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 
 import { useStateContext } from '../context/StateContext'
 import { runFireworks } from '../lib/utils'
+import Strings from '../config/strings'
 
 const Success = () => {
     const { setCartItems, setTotalPrice, setTotalQuantities } = useStateContext()
@@ -25,20 +26,20 @@ const Success = () => {
                     <BsBagCheckFill />
                 </p>
                 <h2>
-                    Thank you for your order!
+                    {Strings.success_thank_you_for_your_order}
                 </h2>
                 <p className='email-msg'>
-                    Check your email inbox for the receipt.
+                    {Strings.success_check_your_email}
                 </p>
                 <p className='description'>
-                    If you have any questions, please email
+                    {Strings.success_if_you_have_questions}
                     <a className='email' href='mailto:lukas.vilim@outlook.com'>
                         lukas.vilim@outlook.com
                     </a>
                 </p>
                 <Link href='/'>
                     <button type='button' width='300px' className='btn'>
-                        Continue Shopping
+                        {Strings.cart_continue_shopping}
                     </button>
                 </Link>
             </div>

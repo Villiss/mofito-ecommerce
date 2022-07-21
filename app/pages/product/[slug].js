@@ -4,6 +4,7 @@ import { AiOutlineMinus, AiOutlinePlus, AiFillStar, AiOutlineStar } from 'react-
 import { client, urlFor } from '../../lib/client';
 import { Product } from '../../components';
 import { useStateContext } from '../../context/StateContext';
+import Strings from '../../config/strings';
 
 const ProductDetails = ({ product, products }) => {
   const { image, name, details, price, features, nutritionValues } = product;
@@ -49,15 +50,27 @@ const ProductDetails = ({ product, products }) => {
               (20)
             </p>
           </div>
-          <h4>Details: </h4>
-          <p>{details}</p>
-          <h4>Nutrition Values: </h4>
-          <p>{nutritionValues}</p>
-          <h4>Features: </h4>
-          <p>{features}</p>
+          {details ? 
+            <div>
+              <h4>{Strings.product_details}</h4>
+              <p>{details}</p>
+            </div>
+          : null }
+          {nutritionValues ? 
+            <div>
+              <h4>{Strings.product_nutrition_values}</h4>
+              <p>{nutritionValues}</p>
+            </div>
+          : null }
+          {features ? 
+            <div>
+              <h4>{Strings.product_features}</h4>
+              <p>{features}</p>
+            </div>
+          : null }
           <p className="price">${price}</p>
           <div className="quantity">
-            <h3>Quantity:</h3>
+            <h3>{Strings.product_quantity}</h3>
             <p className="quantity-desc">
               <span className="minus" onClick={decQty}><AiOutlineMinus /></span>
               <span className="num">{qty}</span>
@@ -65,14 +78,14 @@ const ProductDetails = ({ product, products }) => {
             </p>
           </div>
           <div className="buttons">
-            <button type="button" className="buy-now" onClick={() => onAdd(product, qty)}>Add to Cart</button>
+            <button type="button" className="buy-now" onClick={() => onAdd(product, qty)}>{Strings.product_add_to_cart}</button>
             {/* <button type="button" className="buy-now" onClick={handleBuyNow}>Buy Now</button> */}
           </div>
         </div>
       </div>
 
       <div className="maylike-products-wrapper">
-          <h2>You may also like</h2>
+          <h2>{Strings.product_you_may_also_like}</h2>
           <div className="marquee">
             <div className="maylike-products-container track">
               {products.map((item) => (

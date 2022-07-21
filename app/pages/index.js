@@ -3,6 +3,7 @@ import React from 'react'
 import { client } from '../lib/client'
 
 import { Product, FooterBanner, HeroBanner } from '../components'
+import Strings from '../config/strings'
 
 const Home = ({ products, bannerData }) => {
   return (
@@ -10,8 +11,8 @@ const Home = ({ products, bannerData }) => {
       <HeroBanner heroBanner={bannerData.length && bannerData[0]} />
 
       <div className='products-heading'>
-        <h2>Best Selling Products</h2>
-        <p>The Home Of SSP Golf Energy Bars</p>
+        <h2>{Strings.home_best_selling_products}</h2>
+        <p>{Strings.home_home_of_ssp_energy_bars}</p>
       </div>
       <div className='products-container'>
         {products?.map(
